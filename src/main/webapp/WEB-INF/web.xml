@@ -4,6 +4,15 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd">
 
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.5">
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>blog</web-resource-name>
+            <url-pattern>/*</url-pattern>
+        </web-resource-collection>
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
     <servlet>
         <servlet-name>demo</servlet-name>
         <servlet-class>myapp.DemoServlet</servlet-class>
@@ -15,4 +24,7 @@
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
+    <listener>
+        <listener-class>myapp.Bootstrapper</listener-class>
+    </listener>
 </web-app>
